@@ -11,12 +11,12 @@ const RegisterPage = () => {
   // use useInput hook to control input
   const inputEmailRef = useRef();
   const {
-    value: enteredname,
-    valueIsValid: enterednameIsValid,
-    isHasError: enterednamehasError,
-    valueChangeHandler: enterednameChangehandler,
-    inputBlurHandler: enterednameBlurHandler,
-    reset: enterednameReset,
+    value: enteredName,
+    valueIsValid: enteredNameIsValid,
+    isHasError: enteredNamehasError,
+    valueChangeHandler: enteredNameChangehandler,
+    inputBlurHandler: enteredNameBlurHandler,
+    reset: enteredNameReset,
   } = useInput((value) => value.trim().length !== 0);
 
   const {
@@ -35,7 +35,7 @@ const RegisterPage = () => {
     valueChangeHandler: enteredPasswordChangehandler,
     inputBlurHandler: enteredPasswordBlurHandler,
     reset: enteredPasswordReset,
-  } = useInput((value) => value.trim().length > 5);
+  } = useInput((value) => value.trim().length > 7);
 
   const {
     value: enteredPhone,
@@ -48,7 +48,7 @@ const RegisterPage = () => {
 
   let formIsValid = false;
   if (
-    enterednameIsValid &&
+    enteredNameIsValid &&
     enteredEmailIsValid &&
     enteredPasswordIsValid &&
     enteredPhoneIsValid
@@ -58,7 +58,7 @@ const RegisterPage = () => {
   const submitFormHandler = (e) => {
     e.preventDefault();
     const user = {
-      name: enteredname,
+      name: enteredName,
       email: enteredEmail,
       password: enteredPassword,
       phone: enteredPhone,
@@ -73,7 +73,7 @@ const RegisterPage = () => {
     } else {
       allUser.push(user);
       localStorage.setItem("user", JSON.stringify(allUser));
-      enterednameReset();
+      enteredNameReset();
       enteredEmailReset();
       enteredPhoneReset();
       enteredPasswordReset();
@@ -81,24 +81,24 @@ const RegisterPage = () => {
     }
   };
 
-  const enterednameClass = enterednamehasError ? classes.invalid : undefined;
-  const enterednamePlaceHolder = enterednamehasError
+  const enteredNameClass = enteredNamehasError ? classes.invalid : undefined;
+  const enteredNameErrorContent = enteredNamehasError
     ? "Please input a valid name"
-    : "Full name";
+    : "";
   const enteredEmailClass = enteredEmailhasError ? classes.invalid : undefined;
-  const enteredEmailPlaceHolder = enteredEmailhasError
+  const enteredEmailErrorContent = enteredEmailhasError
     ? "Please input a valid email"
-    : "Email";
+    : "";
   const enteredPasswordClass = enteredPasswordhasError
     ? classes.invalid
     : undefined;
-  const enteredPasswordPlaceHolder = enteredPasswordhasError
+  const enteredPasswordErrorContent = enteredPasswordhasError
     ? "Password must be more than 8 character"
-    : "Password";
+    : "";
   const enteredPhoneClass = enteredPhonehasError ? classes.invalid : undefined;
-  const enteredPhonePlaceHolder = enteredPhonehasError
+  const enteredPhoneErrorContent = enteredPhonehasError
     ? "Phone must be 10 character"
-    : "Phone";
+    : "";
 
   // render component
   return (
@@ -121,38 +121,50 @@ const RegisterPage = () => {
             className="form-group d-flex flex-column"
           >
             <input
-              className={`${enterednameClass} py-3 px-5 fs-2 text-secondary fs-5`}
+              className={`${enteredNameClass} py-3 px-5 fs-2 text-secondary fs-5 pb-4`}
               type="text"
-              placeholder={enterednamePlaceHolder}
-              value={enteredname}
-              onBlur={enterednameBlurHandler}
-              onChange={enterednameChangehandler}
+              placeholder="Enter Name"
+              value={enteredName}
+              onBlur={enteredNameBlurHandler}
+              onChange={enteredNameChangehandler}
             ></input>
+            {enteredNamehasError && (
+              <p className="text-danger">{enteredNameErrorContent}</p>
+            )}
             <input
-              className={`${enteredEmailClass} py-3 px-5 fs-2 text-secondary fs-5`}
+              className={`${enteredEmailClass} py-3 px-5 fs-2 text-secondary fs-5 pb-4`}
               type="email"
-              placeholder={enteredEmailPlaceHolder}
+              placeholder="Enter Email"
               onBlur={enteredEmailBlurHandler}
               onChange={enteredEmailChangehandler}
               value={enteredEmail}
               ref={inputEmailRef}
             ></input>
+            {enteredEmailhasError && (
+              <p className="text-danger">{enteredEmailErrorContent}</p>
+            )}
             <input
-              className={`${enteredPasswordClass} py-3 px-5 fs-2 text-secondary fs-5`}
+              className={`${enteredPasswordClass} py-3 px-5 fs-2 text-secondary fs-5 pb-4`}
               type="password"
-              placeholder={enteredPasswordPlaceHolder}
+              placeholder="Enter Password"
               onBlur={enteredPasswordBlurHandler}
               onChange={enteredPasswordChangehandler}
               value={enteredPassword}
             ></input>
+            {enteredPasswordhasError && (
+              <p className="text-danger">{enteredPasswordErrorContent}</p>
+            )}
             <input
-              className={`${enteredPhoneClass} py-3 px-5 fs-2 text-secondary fs-5`}
+              className={`${enteredPhoneClass} py-3 px-5 fs-2 text-secondary fs-5 pb-4`}
               type="tel"
-              placeholder={enteredPhonePlaceHolder}
+              placeholder="Enter Your Phone Number"
               value={enteredPhone}
               onChange={enteredPhoneChangehandler}
               onBlur={enteredPhoneBlurHandler}
             ></input>
+            {enteredPhonehasError && (
+              <p className="text-danger">{enteredPhoneErrorContent}</p>
+            )}
 
             <button
               disabled={!formIsValid}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import img from "../Resource Assignment 03/banner1.jpg";
 import useInput from "../hook/use-input";
@@ -10,6 +10,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.login);
+  const inputEmailRef = useRef();
 
   // use useInput hook to control input
   const {
@@ -28,29 +29,29 @@ const LoginPage = () => {
     valueChangeHandler: enteredPasswordChangehandler,
     inputBlurHandler: enteredPasswordBlurHandler,
     reset: enteredPasswordReset,
-  } = useInput((value) => value.trim().length > 5);
+  } = useInput((value) => value.trim().length > 7);
 
   let formIsValid = false;
   if (enteredEmailIsValid && enteredPasswordIsValid) {
     formIsValid = true;
   }
   const enteredEmailClass = enteredEmailhasError ? classes.invalid : undefined;
-  const enteredEmailPlaceHolder = enteredEmailhasError
+  const enteredEmailErrorContent = enteredEmailhasError
     ? "Please input a valid email"
-    : "Email";
+    : "";
   const enteredPasswordClass = enteredPasswordhasError
     ? classes.invalid
     : undefined;
-  const enteredPasswordPlaceHolder = enteredPasswordhasError
+  const enteredPasswordErrorContent = enteredPasswordhasError
     ? "Password must be more than 8 character"
-    : "Password";
+    : "";
   const submitFormHandler = (e) => {
     e.preventDefault();
     const enteredUser = {
       email: enteredEmail,
       password: enteredPassword,
     };
-    const USER = JSON.parse(localStorage.getItem("user"));
+    const USER = JSON.parse(localStorage.getItem("user")) || [];
     const loggedInUser = USER.filter(
       (user) =>
         user.email === enteredUser.email &&
@@ -61,11 +62,13 @@ const LoginPage = () => {
       dispatch(loginAction.login(isLogin));
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       navigate("/");
+      enteredEmailReset();
+      enteredPasswordReset();
     } else {
+      alert("your account doesn't exist!");
+      enteredPasswordReset();
+      inputEmailRef.current.focus();
     }
-
-    enteredEmailReset();
-    enteredPasswordReset();
   };
   // render component
   return (
@@ -87,22 +90,35 @@ const LoginPage = () => {
             onSubmit={submitFormHandler}
             className="form-group d-flex flex-column"
           >
-            <input
-              className={`${enteredEmailClass} py-3 px-5 fs-2 text-secondary fs-5`}
-              type="email"
-              placeholder={enteredEmailPlaceHolder}
-              onBlur={enteredEmailBlurHandler}
-              onChange={enteredEmailChangehandler}
-              value={enteredEmail}
-            ></input>
-            <input
-              className={`${enteredPasswordClass} py-3 px-5 fs-2 text-secondary fs-5`}
-              type="password"
-              placeholder={enteredPasswordPlaceHolder}
-              onBlur={enteredPasswordBlurHandler}
-              onChange={enteredPasswordChangehandler}
-              value={enteredPassword}
-            ></input>
+            <div className="">
+              <input
+                style={{ width: "100%" }}
+                className={`${enteredEmailClass} py-3 px-5 fs-2 text-secondary mb-3`}
+                type="email"
+                placeholder="Enter Email"
+                onBlur={enteredEmailBlurHandler}
+                onChange={enteredEmailChangehandler}
+                value={enteredEmail}
+                ref={inputEmailRef}
+              ></input>
+              {enteredEmailhasError && (
+                <p className="text-danger">{enteredEmailErrorContent}</p>
+              )}
+            </div>
+            <div className="">
+              <input
+                style={{ width: "100%" }}
+                className={`${enteredPasswordClass} py-3 px-5 fs-2 text-secondary fs-5`}
+                type="password"
+                placeholder="Enter Passwoed"
+                onBlur={enteredPasswordBlurHandler}
+                onChange={enteredPasswordChangehandler}
+                value={enteredPassword}
+              ></input>
+              {enteredPasswordhasError && (
+                <p className="text-danger">{enteredPasswordErrorContent}</p>
+              )}
+            </div>
             <button
               disabled={!formIsValid}
               className="bg-dark text-light text-uppercase mt-5 px-3 py-4 fs-3"
