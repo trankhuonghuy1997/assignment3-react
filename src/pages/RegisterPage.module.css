@@ -1,0 +1,15 @@
+.form-content {
+  width: 30%;
+}
+.invalid {
+  background-color: rgba(255, 0, 0, 0.3);
+  border-color: tomato;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999 !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+}

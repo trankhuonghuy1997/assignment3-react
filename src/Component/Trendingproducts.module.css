@@ -1,0 +1,5 @@
+.product:hover {
+  filter: blur(1px);
+  cursor: pointer;
+  transform: scale(1.1);
+}

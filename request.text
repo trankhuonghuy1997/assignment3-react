@@ -1,0 +1,42 @@
+1. Tạo một dự án ReactJS mới: - Tạo được dự án bằng câu lệnh create-react-app và cài đặt đươc các thư viện cần thiết. OK
+2. Tạo Router cho ứng dụng: - Sử dụng thư viện react-router-dom để tạo các Route và phân trang cho ứng dụng. OK
+3. Tạo Layout tổng gồm NavBar và Footer: 
+    - Tạo được NavBar và Footer theo như thiết kế. OK
+    - Sử dụng useNavigate để chuyển hướng người dùng. OK
+4. Tạo giao diện trang chủ. 
+    - Tạo giao diện HomePage giống như thiết kế. OK
+    - Khi click vào danh mục nào thì cũng sẽ được chuyển hướng về ShopPage. OK
+    - Hiển thị được danh sách sản phẩm (hiển thị tối đa 8 phần tử).
+5. Hiển thị popup chi tiết sản phẩm: - Khi click vào một sản phẩm thì sẽ hiện popup chứa thông tin chi tiết của sản phẩm đó. OK
+6. Tạo giao diện xem danh sách sản phẩm
+    - Tạo giao diện ShopPage theo như thiết kế. OK
+    - Hiển thị được danh sách sản phẩm theo category. OK
+    - Khi nhấn vào một danh mục ở phần Menu, danh sách chỉ hiển thị các sản phẩm thuộc thư mục đó. OK
+    -Khi click vào sản phẩm thì người dùng được chuyển hướng đến trang Detail Page của sản phẩm đó. OK
+7. Tạo giao diện xem chi tiết sản phẩm	
+    - Tạo được giao diện DetailPage theo như thiết kế. OK
+    - Dựa vào url để lấy id của sản phẩm muốn xem. OK
+    - Phần "Related Product" sẽ chỉ hiển thị danh sách các sản phẩm có cùng danh mục với sản phẩm đang xem.	 OK
+8. Xử lý đăng nhập / đăng ký tài khoản	
+	- Tạo được trang Đăng Ký/Đăng nhập theo như thiết kế. OK
+    - Dữ liệu được lưu vào State và localStorage. OK
+    - Xử lý các logic theo như đề bài. OK
+9. Thêm sản phẩm vào giỏ hàng
+    - Người dùng có thể thêm sản phẩm vào giỏ hàng. OK
+    - Dữ liệu về giỏ hàng được lưu ở localStorage và State, khi tải lại trang sẽ không mất đi. OK
+10. Tạo giao diện xem giỏ hàng
+    - Tạo được giao diện xem giỏ hàng như thiết kế. OK
+    - Hiển thị danh sách các sản phẩm đã được thêm vào giỏ hàng. OK
+    - Tính tổng giá trị đơn hàng và hiển thị ở bên phải màn hình. OK
+    - Người dùng cũng có thể chỉnh sửa số lượng hoặc xóa đi một sản phẩm. OK
+11. Tạo giao diện Checkout
+    - Tạo giao diện Checkout theo như thiết kế. OK
+    - Hiển thị lại thông tin của đơn hàng (sản phẩm, số lượng, thành tiền) cũng như giá trị đơn hàng. OK
+12. Deploy ứng dụng lên Online	- Deploy ứng dụng này lên online để nhiều người có thể truy cập vào và sử dụng được.
+13. Tạo màn hình livechat
+    - Tạo thêm một giao diện để người dùng có thể liên lạc với bộ phận chăm sóc khách hàng theo như thiết kế. OK
+    - Phần popup sẽ ở dạng floating, tức là bạn có di chuyển trang web lên xuống thì popup vẫn được hiển thị. OK
+    - Khi click vào thì sẽ ra màn hình chat, click một lần nữa thì sẽ ẩn màn hình chat đi. OK
+
+
+https://assignment3-deployment.web.app/

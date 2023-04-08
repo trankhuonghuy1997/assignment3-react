@@ -1,0 +1,13 @@
+.product:hover {
+  cursor: pointer;
+  filter: blur(1px);
+  transform: scale(1.1);
+}
+
+.text {
+  width: 100%;
+}
+
+.form {
+  width: 50%;
+}

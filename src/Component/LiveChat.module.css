@@ -1,0 +1,37 @@
+.main {
+  position: fixed;
+  bottom: 350px;
+  right: 70px;
+  z-index: 1;
+}
+
+.chat {
+  position: fixed;
+  bottom: 450px;
+  right: 140px;
+  width: 600px;
+  height: fit-content;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 30px #999;
+  padding: 20px;
+  animation: float 1s ease-in-out;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 50px;
+  animation: float 1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

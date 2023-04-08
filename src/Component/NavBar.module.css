@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 0;
+  font-size: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+  font-size: 28px;
+}
+
+.left,
+.right {
+  display: flex;
+  font-style: italic;
+  gap: 20px;
+}
+.left p,
+.right p {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+  margin: 0 20px;
+}
+.right p i {
+  margin-right: 5px;
+}
+.active {
+  color: rgb(244, 190, 64) !important;
+}
+
+.total {
+  color: red !important;
+  font-size: 16px !important;
+  top: -50%;
+  left: -10px;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+}

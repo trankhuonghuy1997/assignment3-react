@@ -1,0 +1,32 @@
+.main {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.invalid {
+  background-color: rgba(255, 0, 0, 0.3);
+  border-color: tomato;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999 !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+}
+.form-group {
+  flex-grow: 11;
+}
+.checkout-amout {
+  flex-grow: 1;
+}
+.product {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.product-price {
+  text-align: right;
+  padding: 5px 0;
+  font-style: italic;
+}
